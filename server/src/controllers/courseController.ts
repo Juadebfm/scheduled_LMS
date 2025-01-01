@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import Course from "../models/courseModel";
+
+// Get All Courses
 export const listCourses = async (
   req: Request,
   res: Response
@@ -11,6 +13,20 @@ export const listCourses = async (
         ? await Course.scan("category").eq(category).exec()
         : await Course.scan().exec();
     res.json({ message: "Courses Retrieved Successfully", data: courses });
+  } catch (error) {
+    res.status(500).json({ message: "Error Retrieving Courses", error });
+  }
+};
+
+// Get A Single Course
+export const getCourse = async (req: Request, res: Response): Promise<void> => {
+  const { courseId } = req.params;
+  try {
+    const course = await Course.get(courseId);
+    if (!course) {
+      res.status(404).json({ message: "Course not found" });
+    }
+    res.json({ message: "Course Retrieved Successfully", data: course });
   } catch (error) {
     res.status(500).json({ message: "Error Retrieving Courses", error });
   }

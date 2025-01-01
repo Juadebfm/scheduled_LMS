@@ -12,8 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.listCourses = void 0;
+exports.getCourse = exports.listCourses = void 0;
 const courseModel_1 = __importDefault(require("../models/courseModel"));
+// Get All Courses
 const listCourses = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { category } = req.query;
     try {
@@ -27,3 +28,18 @@ const listCourses = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.listCourses = listCourses;
+// Get A Single Course
+const getCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { courseId } = req.params;
+    try {
+        const course = yield courseModel_1.default.get(courseId);
+        if (!course) {
+            res.status(404).json({ message: "Course not found" });
+        }
+        res.json({ message: "Course Retrieved Successfully", data: course });
+    }
+    catch (error) {
+        res.status(500).json({ message: "Error Retrieving Courses", error });
+    }
+});
+exports.getCourse = getCourse;
