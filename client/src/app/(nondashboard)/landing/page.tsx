@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -6,16 +7,15 @@ import Image from "next/image";
 import { useCarousel } from "@/hooks/useCarousel";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetCoursesQuery } from "@/state/api";
-import CourseCardSearch from "@/components/CourseCardSearch";
 import { useRouter } from "next/navigation";
-
-// creating a loadinng skeleton for the time between when the page loads
+import CourseCardSearch from "@/components/CourseCardSearch";
+import { useUser } from "@clerk/nextjs";
 
 const LoadingSkeleton = () => {
   return (
-    <div className="loading-skeleton">
-      <div className="loading-skeleton__hero">
-        <div className="loading-skeleton__hero-content">
+    <div className="landing-skeleton">
+      <div className="landing-skeleton__hero">
+        <div className="landing-skeleton__hero-content">
           <Skeleton className="landing-skeleton__title" />
           <Skeleton className="landing-skeleton__subtitle" />
           <Skeleton className="landing-skeleton__subtitle-secondary" />
@@ -29,12 +29,13 @@ const LoadingSkeleton = () => {
         <Skeleton className="landing-skeleton__featured-description" />
 
         <div className="landing-skeleton__tags">
-          {Array.from({ length: 7 }).map((_, index) => (
+          {[1, 2, 3, 4, 5].map((_, index) => (
             <Skeleton key={index} className="landing-skeleton__tag" />
           ))}
         </div>
+
         <div className="landing-skeleton__courses">
-          {Array.from({ length: 4 }).map((_, index) => (
+          {[1, 2, 3, 4].map((_, index) => (
             <Skeleton key={index} className="landing-skeleton__course-card" />
           ))}
         </div>
@@ -48,13 +49,14 @@ const Landing = () => {
   const currentImage = useCarousel({ totalImages: 3 });
   const { data: courses, isLoading, isError } = useGetCoursesQuery({});
 
+  const handleCourseClick = (courseId: string) => {
+    router.push(`/search?id=${courseId}`, {
+      scroll: false,
+    });
+  };
+
   if (isLoading) return <LoadingSkeleton />;
 
-  const handleCourseClick = (courseId: string) => {
-    // navigate to course details page
-    router.push(`/search?id=${courseId}`);
-  };
-  console.log("Courses:", courses);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -71,13 +73,13 @@ const Landing = () => {
         <div className="landing__hero-content">
           <h1 className="landing__title">Courses</h1>
           <p className="landing__description">
-            This is the list of the courses you can enroll in
+            This is the list of the courses you can enroll in.
             <br />
-            Courses when you need themn= and want them.
+            Courses when you need them and want them.
           </p>
           <div className="landing__cta">
-            <Link href="/search">
-              <div className="landing__cta-button">Search for courses</div>
+            <Link href="/search" scroll={false}>
+              <div className="landing__cta-button">Search for Courses</div>
             </Link>
           </div>
         </div>
@@ -88,8 +90,8 @@ const Landing = () => {
               src={src}
               alt={`Hero Banner ${index + 1}`}
               fill
-              priority={index === currentImage} //setup hook for image timing
-              sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
+              priority={index === currentImage}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className={`landing__hero-image ${
                 index === currentImage ? "landing__hero-image--active" : ""
               }`}
@@ -106,21 +108,18 @@ const Landing = () => {
       >
         <h2 className="landing__featured-title">Featured Courses</h2>
         <p className="landing__featured-description">
-          From Beginner To advance in all industries we have all the right
-          courses for you and preparing your entire journey for learning for
-          your
-          <br />
-          Check out these featured courses
+          From beginner to advanced, in all industries, we have the right
+          courses just for you and preparing your entire journey for learning
+          and making the most.
         </p>
+
         <div className="landing__tags">
           {[
             "web development",
             "enterprise IT",
-            "product management",
             "react nextjs",
-            "cinematography",
-            "video editing",
-            "talent outsourcing",
+            "javascript",
+            "backend development",
           ].map((tag, index) => (
             <span key={index} className="landing__tag">
               {tag}
