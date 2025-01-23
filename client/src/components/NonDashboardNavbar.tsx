@@ -9,19 +9,20 @@ import React from "react";
 const NonDashboardNavbar = () => {
   const { user } = useUser();
   const userRole = user?.publicMetadata?.userType as "student" | "teacher";
-  console.log("user?.publicMetadata?.userType", user?.publicMetadata?.userType)
+
   return (
     <nav className="nondashboard-navbar">
       <div className="nondashboard-navbar__container">
         <div className="nondashboard-navbar__search">
-          <Link href="/" className="nondashboard-navbar__brand">
-            LWB
+          <Link href="/" className="nondashboard-navbar__brand" scroll={false}>
+            EDROH
           </Link>
           <div className="flex items-center gap-4">
             <div className="relative group">
               <Link
                 href="/search"
                 className="nondashboard-navbar__search-input"
+                scroll={false}
               >
                 <span className="hidden sm:inline">Search Courses</span>
                 <span className="sm:hidden">Search</span>
@@ -39,14 +40,13 @@ const NonDashboardNavbar = () => {
             <Bell className="nondashboard-navbar__notification-icon" />
           </button>
 
-          {/* SIGNIN BUTTON */}
           <SignedIn>
             <UserButton
               appearance={{
                 baseTheme: dark,
                 elements: {
                   userButtonOuterIdentifier: "text-customgreys-dirtyGrey",
-                  userButtonBox: "sclae-90 sm:scale-100",
+                  userButtonBox: "scale-90 sm:scale-100",
                 },
               }}
               showName={true}
@@ -60,14 +60,16 @@ const NonDashboardNavbar = () => {
             <Link
               href="/signin"
               className="nondashboard-navbar__auth-button--login"
+              scroll={false}
             >
-              Sign In
+              Log in
             </Link>
             <Link
               href="/signup"
               className="nondashboard-navbar__auth-button--signup"
+              scroll={false}
             >
-              Sign Up
+              Sign up
             </Link>
           </SignedOut>
         </div>

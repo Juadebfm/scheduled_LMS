@@ -1,6 +1,6 @@
+import { formatPrice } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
-import { formatPrice } from "@/lib/utils";
 
 const CourseCardSearch = ({
   course,
@@ -21,8 +21,9 @@ const CourseCardSearch = ({
           src={course.image || "/placeholder.png"}
           alt={course.title}
           fill
-          sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="course-card-search__image"
+          priority
         />
       </div>
       <div className="course-card-search__content">

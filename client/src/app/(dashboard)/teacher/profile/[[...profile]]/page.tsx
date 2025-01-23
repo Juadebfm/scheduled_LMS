@@ -6,7 +6,7 @@ import React from "react";
 const TeacherProfilePage = () => {
   return (
     <>
-      <Header title="Profile" subtitle="View Your Profile" />
+      <Header title="Profile" subtitle="View your profile" />
       <UserProfile
         path="/teacher/profile"
         routing="path"

@@ -1,0 +1,32 @@
+{
+  "node": {
+    "7f5e0c2c204a7b267a90121766995d6f0786c4cc6a": {
+      "workers": {
+        "app/_not-found/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fapple%2FDocuments%2Fscheduled_LMS%2Fclient%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%5B%227f5e0c2c204a7b267a90121766995d6f0786c4cc6a%22%2C%22invalidateCacheAction%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/(dashboard)/user/courses/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fapple%2FDocuments%2Fscheduled_LMS%2Fclient%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%5B%227f5e0c2c204a7b267a90121766995d6f0786c4cc6a%22%2C%22invalidateCacheAction%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fapple%2FDocuments%2Fscheduled_LMS%2Fclient%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%5B%227f5e0c2c204a7b267a90121766995d6f0786c4cc6a%22%2C%22invalidateCacheAction%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/(nondashboard)/search/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fapple%2FDocuments%2Fscheduled_LMS%2Fclient%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%5B%227f5e0c2c204a7b267a90121766995d6f0786c4cc6a%22%2C%22invalidateCacheAction%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/_not-found/page": "action-browser",
+        "app/(dashboard)/user/courses/page": "action-browser",
+        "app/page": "action-browser",
+        "app/(nondashboard)/search/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "leFJuyBWIqOhbSUM2DNapdDT0Bj/0jgm+QBGofEEvpI="
+}
